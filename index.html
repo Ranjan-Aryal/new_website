@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+  img-src 'self' data:;
+  connect-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  frame-ancestors 'none';
+  ">
+  <title>RanjanAryal | BCSIT Student</title>
+
+
+  <!-- Google Fonts: Orbitron (cyber display) + Poppins (body) + Share Tech Mono (terminal) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       LOADING SCREEN — shown on initial page load
+  ═══════════════════════════════════════════ -->
+  <div id="loader" class="loader">
+    <div class="loader__inner">
+      <div class="loader__ring"></div>
+      <div class="loader__ring loader__ring--2"></div>
+      <div class="loader__ring loader__ring--3"></div>
+      <div class="loader__text">
+        <span class="loader__label">INITIALIZING SYSTEM</span>
+        <span id="loader-percent" class="loader__percent">0%</span>
+      </div>
+      <div class="loader__bar-wrap">
+        <div id="loader-bar" class="loader__bar"></div>
+      </div>
+      <div class="loader__lines">
+        <span>> Booting CyberOS v2.4...</span>
+        <span>> Loading security modules...</span>
+        <span>> Establishing secure connection...</span>
+        <span id="loader-last-line">> Access Granted ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION BAR — sticky, with hamburger
+  ═══════════════════════════════════════════ -->
+  <nav id="navbar" class="navbar">
+    <div class="container navbar__container">
+      <!-- Logo -->
+      <a href="#home" class="navbar__logo">
+        <span class="navbar__logo-bracket">[</span>
+        <span class="navbar__logo-text">CYBER</span>
+        <span class="navbar__logo-accent">_</span>
+        <span class="navbar__logo-text">DEV</span>
+        <span class="navbar__logo-bracket">]</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="navbar__links" id="nav-links">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#certifications" class="nav-link" data-section="certifications">Certs</a></li>
+        <li><a href="#timeline" class="nav-link" data-section="timeline">Journey</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="navbar__controls">
+        <!-- Live Clock -->
+        <div class="navbar__clock" id="nav-clock">00:00:00</div>
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme" title="Toggle light/dark mode">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <!-- Hamburger -->
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════
+       HERO / HOME SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="home" class="hero section">
+    <!-- Canvas for particle animation -->
+    <canvas id="hero-canvas" class="hero__canvas"></canvas>
+
+    <!-- Animated grid overlay -->
+    <div class="hero__grid"></div>
+
+    <!-- Scanline overlay -->
+    <div class="hero__scanline"></div>
+
+    <div class="container hero__content">
+      <div class="hero__left reveal-left">
+        <!-- Status badge -->
+        <div class="hero__status">
+          <span class="hero__status-dot"></span>
+          <span>Available for Internship</span>
+        </div>
+
+        <!-- Greeting -->
+        <p class="hero__greeting">Hello, I'm</p>
+
+        <!-- Name -->
+        <h1 class="hero__name">
+          <span class="hero__name-first">Ranjan</span>
+          <span class="hero__name-last"> Aryal</span>
+          <span class="hero__name-cursor">|</span>
+        </h1>
+
+        <!-- Subtitle with typing animation -->
+        <div class="hero__subtitle">
+          <span class="hero__subtitle-static">I'm a&nbsp;</span>
+          <span id="typing-text" class="hero__typing-text"></span>
+          <span class="hero__typing-cursor">▋</span>
+        </div>
+
+        <!-- Description -->
+        <p class="hero__description">
+          BCSIT student passionate about cybersecurity, ethical hacking, and
+          building secure digital solutions. Exploring the frontier of network
+          defense, CTF challenges, and offensive security research.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero__cta">
+          <a href="#" class="btn btn--primary">
+            <i class="fas fa-download"></i>
+            Download Resume
+          </a>
+          <a href="#contact" class="btn btn--outline">
+            <i class="fas fa-terminal"></i>
+            Contact Me
+          </a>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-count="12">0</span>
+            <span class="hero__stat-label">Projects</span>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-count="8">0</span>
+            <span class="hero__stat-label">CTF Events</span>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-num" data-count="5">0</span>
+            <span class="hero__stat-label">Certs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Image -->
+      <div class="hero__right reveal-right">
+        <div class="hero__avatar-wrap">
+          <div class="hero__avatar-ring hero__avatar-ring--1"></div>
+          <div class="hero__avatar-ring hero__avatar-ring--2"></div>
+          <div class="hero__avatar-ring hero__avatar-ring--3"></div>
+          <div class="hero__avatar-hex">
+            <div class="hero__avatar-inner">
+              <i class="fas fa-user-shield hero__avatar-icon"></i>
+              <span class="hero__avatar-label">BCSIT Student</span>
+            </div>
+          </div>
+          <!-- Orbiting badges -->
+          <div class="hero__orbit">
+            <span class="hero__orbit-badge" style="--i:0"><i class="fab fa-python"></i></span>
+            <span class="hero__orbit-badge" style="--i:1"><i class="fas fa-shield-alt"></i></span>
+            <span class="hero__orbit-badge" style="--i:2"><i class="fas fa-code"></i></span>
+            <span class="hero__orbit-badge" style="--i:3"><i class="fas fa-network-wired"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="hero__scroll">
+      <span class="hero__scroll-label">Scroll Down</span>
+      <div class="hero__scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TERMINAL WIDGET (floating / fixed)
+  ═══════════════════════════════════════════ -->
+  <div id="terminal-widget" class="terminal-widget">
+    <div class="terminal-widget__header">
+      <span class="terminal-widget__dot" style="background:#ff5f56"></span>
+      <span class="terminal-widget__dot" style="background:#ffbd2e"></span>
+      <span class="terminal-widget__dot" style="background:#27c93f"></span>
+      <span class="terminal-widget__title">root@cyberlab:~</span>
+      <button id="terminal-close" class="terminal-widget__close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="terminal-widget__body" id="terminal-body">
+      <div class="terminal-widget__line">
+        <span class="terminal-widget__prompt">root@cyberlab:~$</span>
+        <span class="terminal-widget__cmd"> whoami</span>
+      </div>
+      <div class="terminal-widget__output">Ranjan Aryal — BCSIT Student &amp; Cybersecurity Enthusiast</div>
+      <div class="terminal-widget__line">
+        <span class="terminal-widget__prompt">root@cyberlab:~$</span>
+        <span class="terminal-widget__cmd"> cat skills.txt</span>
+      </div>
+      <div class="terminal-widget__output">Python | JavaScript | Linux | Nmap | Burp Suite | Wireshark</div>
+      <div class="terminal-widget__line">
+        <span class="terminal-widget__prompt">root@cyberlab:~$</span>
+        <span id="terminal-typing" class="terminal-widget__cmd"></span>
+        <span class="terminal-widget__blink">▋</span>
+      </div>
+    </div>
+    <div class="terminal-widget__input-wrap">
+      <span class="terminal-widget__prompt">$</span>
+      <input type="text" id="terminal-input" class="terminal-widget__input" placeholder="type a command..."
+        autocomplete="off" />
+    </div>
+  </div>
+  <!-- Floating terminal toggle button -->
+  <button id="terminal-toggle" class="btn-terminal-toggle" title="Open Terminal">
+    <i class="fas fa-terminal"></i>
+  </button>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT ME SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="about" class="about section">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section__header reveal-up">
+        <h2 class="section__title">About <span class="text-accent">Me</span></h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="about__grid">
+        <!-- Left: Profile card -->
+        <div class="about__profile-card glass-card reveal-left">
+          <div class="about__profile-img">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h3 class="about__profile-name">Ranjan Aryal</h3>
+          <p class="about__profile-role">BCSIT Student · Cybersecurity Aspirant</p>
+          <div class="about__profile-info">
+            <div class="about__info-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Butwal, Nepal</span>
+            </div>
+            <div class="about__info-row">
+              <i class="fas fa-graduation-cap"></i>
+              <span>6th Semester — BCSIT</span>
+            </div>
+            <div class="about__info-row">
+              <i class="fas fa-envelope"></i>
+              <span>ranjan123aryal@gmail.com</span>
+            </div>
+            <div class="about__info-row">
+              <i class="fas fa-code-branch"></i>
+              <span>github.com/ranjan-aryal</span>
+            </div>
+          </div>
+          <!-- Live clock widget inside about -->
+          <div class="about__clock">
+            <i class="fas fa-clock"></i>
+            <span id="about-clock">Loading...</span>
+          </div>
+        </div>
+
+        <!-- Right: Text + interests -->
+        <div class="about__content reveal-right">
+          <p class="about__intro">
+            I'm a passionate <strong>BCSIT student</strong> on a mission to become a cybersecurity professional.
+            With a deep interest in how systems work and how they break, I spend my days learning
+            offensive and defensive security techniques, participating in CTF competitions, and building
+            practical security tools.
+          </p>
+          <p class="about__intro">
+            Currently pursuing my Bachelor's degree, I complement my academic learning with self-study
+            in ethical hacking, Linux administration, and network security. I believe the best security
+            professionals understand both sides of the fence.
+          </p>
+
+          <!-- Education -->
+          <div class="about__education">
+            <h4 class="about__sub-title"><i class="fas fa-university"></i> Education</h4>
+            <div class="about__edu-card glass-card-sm">
+              <div class="about__edu-left">
+                <span class="about__edu-degree">BCSIT</span>
+                <span class="about__edu-school">Pokhara University</span>
+              </div>
+              <div class="about__edu-right">
+                <span class="about__edu-year">2023 – Present</span>
+                <span class="about__edu-gpa">GPA: 3.6/4.0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div class="about__interests">
+            <h4 class="about__sub-title"><i class="fas fa-crosshairs"></i> Interests</h4>
+            <div class="about__interest-tags">
+              <span class="tag tag--cyber"><i class="fas fa-shield-virus"></i> Cybersecurity</span>
+              <span class="tag tag--net"><i class="fas fa-network-wired"></i> Networking</span>
+              <span class="tag tag--hack"><i class="fas fa-user-secret"></i> Ethical Hacking</span>
+              <span class="tag tag--web"><i class="fas fa-globe"></i> Web Security</span>
+              <span class="tag tag--forensic"><i class="fas fa-search"></i> Digital Forensics</span>
+              <span class="tag tag--ctf"><i class="fas fa-flag"></i> CTF Challenges</span>
+            </div>
+          </div>
+
+          <!-- Career goal -->
+          <div class="about__goal glass-card-sm">
+            <i class="fas fa-rocket about__goal-icon"></i>
+            <div>
+              <strong>Career Goal:</strong> To become a skilled SOC Analyst / Penetration Tester,
+              contributing to enterprise security operations and red team engagements.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CYBERSECURITY STATS DASHBOARD
+  ═══════════════════════════════════════════ -->
+  <section class="cyber-stats section--sm">
+    <div class="container">
+      <div class="cyber-stats__grid">
+        <div class="cyber-stats__card reveal-up glass-card" style="--delay:0.1s">
+          <i class="fas fa-flag cyber-stats__icon"></i>
+          <span class="cyber-stats__num" data-count="47">0</span>
+          <span class="cyber-stats__label">CTF Flags</span>
+        </div>
+        <div class="cyber-stats__card reveal-up glass-card" style="--delay:0.2s">
+          <i class="fas fa-bug cyber-stats__icon"></i>
+          <span class="cyber-stats__num" data-count="23">0</span>
+          <span class="cyber-stats__label">Vulns Found</span>
+        </div>
+        <div class="cyber-stats__card reveal-up glass-card" style="--delay:0.3s">
+          <i class="fas fa-code cyber-stats__icon"></i>
+          <span class="cyber-stats__num" data-count="1200">0</span>
+          <span class="cyber-stats__label">Lines of Code</span>
+        </div>
+        <div class="cyber-stats__card reveal-up glass-card" style="--delay:0.4s">
+          <i class="fas fa-coffee cyber-stats__icon"></i>
+          <span class="cyber-stats__num" data-count="342">0</span>
+          <span class="cyber-stats__label">Cups of Coffee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SKILLS SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Technical <span class="text-accent">Arsenal</span></h2>
+        <div class="section__line"></div>
+      </div>
+
+      <!-- Skills tabs -->
+      <div class="skills__tabs reveal-up">
+        <button class="skills__tab active" data-tab="programming">Programming</button>
+        <button class="skills__tab" data-tab="cybersecurity">Cybersecurity</button>
+        <button class="skills__tab" data-tab="database">Database</button>
+        <button class="skills__tab" data-tab="tools">Tools</button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="skills__panels">
+
+        <!-- Programming Panel -->
+        <div class="skills__panel active" id="tab-programming">
+          <div class="skills__grid">
+            <div class="skill-card glass-card reveal-up" style="--delay:0.1s">
+              <div class="skill-card__header">
+                <i class="fab fa-html5 skill-card__icon" style="color:#e34c26"></i>
+                <span class="skill-card__name">HTML5</span>
+                <span class="skill-card__percent">90%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="90"></div>
+              </div>
+              <p class="skill-card__desc">Semantic markup, accessibility, SEO-friendly structure.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.15s">
+              <div class="skill-card__header">
+                <i class="fab fa-css3-alt skill-card__icon" style="color:#264de4"></i>
+                <span class="skill-card__name">CSS3</span>
+                <span class="skill-card__percent">85%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="85"></div>
+              </div>
+              <p class="skill-card__desc">Flexbox, Grid, animations, responsive design.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.2s">
+              <div class="skill-card__header">
+                <i class="fab fa-js skill-card__icon" style="color:#f7df1e"></i>
+                <span class="skill-card__name">JavaScript</span>
+                <span class="skill-card__percent">75%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="75"></div>
+              </div>
+              <p class="skill-card__desc">DOM manipulation, async/await, APIs, ES6+.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.25s">
+              <div class="skill-card__header">
+                <i class="fab fa-python skill-card__icon" style="color:#3572a5"></i>
+                <span class="skill-card__name">Python</span>
+                <span class="skill-card__percent">80%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="80"></div>
+              </div>
+              <p class="skill-card__desc">Scripting, automation, security tools, socket programming.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.3s">
+              <div class="skill-card__header">
+                <i class="fab fa-php skill-card__icon" style="color:#777bb3"></i>
+                <span class="skill-card__name">PHP</span>
+                <span class="skill-card__percent">60%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="60"></div>
+              </div>
+              <p class="skill-card__desc">Server-side scripting, form handling, MySQL integration.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cybersecurity Panel -->
+        <div class="skills__panel" id="tab-cybersecurity">
+          <div class="skills__grid">
+            <div class="skill-card glass-card reveal-up" style="--delay:0.1s">
+              <div class="skill-card__header">
+                <i class="fas fa-network-wired skill-card__icon" style="color:var(--cyan)"></i>
+                <span class="skill-card__name">Networking</span>
+                <span class="skill-card__percent">78%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="78"></div>
+              </div>
+              <p class="skill-card__desc">TCP/IP, OSI model, subnetting, routing protocols.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.15s">
+              <div class="skill-card__header">
+                <i class="fab fa-linux skill-card__icon" style="color:#fcc624"></i>
+                <span class="skill-card__name">Linux</span>
+                <span class="skill-card__percent">82%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="82"></div>
+              </div>
+              <p class="skill-card__desc">Bash scripting, file permissions, process management.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.2s">
+              <div class="skill-card__header">
+                <i class="fas fa-fish skill-card__icon" style="color:#00bcd4"></i>
+                <span class="skill-card__name">Wireshark</span>
+                <span class="skill-card__percent">70%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="70"></div>
+              </div>
+              <p class="skill-card__desc">Packet capture, protocol analysis, traffic inspection.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.25s">
+              <div class="skill-card__header">
+                <i class="fas fa-spider skill-card__icon" style="color:#ff6633"></i>
+                <span class="skill-card__name">Burp Suite</span>
+                <span class="skill-card__percent">65%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="65"></div>
+              </div>
+              <p class="skill-card__desc">Web proxy, intercepting requests, vulnerability scanning.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.3s">
+              <div class="skill-card__header">
+                <i class="fas fa-exclamation-triangle skill-card__icon" style="color:#ff4444"></i>
+                <span class="skill-card__name">OWASP Top 10</span>
+                <span class="skill-card__percent">75%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="75"></div>
+              </div>
+              <p class="skill-card__desc">SQL injection, XSS, CSRF, IDOR, broken auth.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.35s">
+              <div class="skill-card__header">
+                <i class="fas fa-satellite-dish skill-card__icon" style="color:var(--blue-light)"></i>
+                <span class="skill-card__name">Nmap</span>
+                <span class="skill-card__percent">80%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="80"></div>
+              </div>
+              <p class="skill-card__desc">Port scanning, service enumeration, OS detection.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database Panel -->
+        <div class="skills__panel" id="tab-database">
+          <div class="skills__grid">
+            <div class="skill-card glass-card reveal-up" style="--delay:0.1s">
+              <div class="skill-card__header">
+                <i class="fas fa-database skill-card__icon" style="color:#f29111"></i>
+                <span class="skill-card__name">MySQL</span>
+                <span class="skill-card__percent">72%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="72"></div>
+              </div>
+              <p class="skill-card__desc">Schema design, queries, joins, stored procedures.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.15s">
+              <div class="skill-card__header">
+                <i class="fas fa-table skill-card__icon" style="color:var(--cyan)"></i>
+                <span class="skill-card__name">SQL</span>
+                <span class="skill-card__percent">78%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="78"></div>
+              </div>
+              <p class="skill-card__desc">Complex queries, subqueries, indexing, optimization.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools Panel -->
+        <div class="skills__panel" id="tab-tools">
+          <div class="skills__grid">
+            <div class="skill-card glass-card reveal-up" style="--delay:0.1s">
+              <div class="skill-card__header">
+                <i class="fab fa-git-alt skill-card__icon" style="color:#f05032"></i>
+                <span class="skill-card__name">Git</span>
+                <span class="skill-card__percent">85%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="85"></div>
+              </div>
+              <p class="skill-card__desc">Version control, branching strategies, merging, rebasing.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.15s">
+              <div class="skill-card__header">
+                <i class="fab fa-github skill-card__icon" style="color:#ffffff"></i>
+                <span class="skill-card__name">GitHub</span>
+                <span class="skill-card__percent">82%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="82"></div>
+              </div>
+              <p class="skill-card__desc">Repositories, PRs, Actions, GitHub Pages deployment.</p>
+            </div>
+            <div class="skill-card glass-card reveal-up" style="--delay:0.2s">
+              <div class="skill-card__header">
+                <i class="fas fa-code skill-card__icon" style="color:#0078d4"></i>
+                <span class="skill-card__name">VS Code</span>
+                <span class="skill-card__percent">88%</span>
+              </div>
+              <div class="skill-card__bar-wrap">
+                <div class="skill-card__bar" data-width="88"></div>
+              </div>
+              <p class="skill-card__desc">Extensions, debugging, integrated terminal, shortcuts.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJECTS SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Featured <span class="text-accent">Projects</span></h2>
+        <div class="section__line"></div>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="projects__filters reveal-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="security">Security</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="projects__grid" id="projects-grid">
+
+        <div class="project-card glass-card reveal-up" data-category="python security" style="--delay:0.1s">
+          <div class="project-card__image">
+            <i class="fas fa-satellite-dish project-card__img-icon"></i>
+            <div class="project-card__overlay">
+              <span class="project-card__cat-badge">Python · Security</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Port Scanner Pro</h3>
+            <p class="project-card__desc">Multi-threaded port scanner built with Python sockets. Supports banner
+              grabbing, OS fingerprinting, and exports results to JSON.</p>
+            <div class="project-card__stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Sockets</span>
+              <span class="stack-tag">Threading</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="btn btn--sm btn--outline"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="btn btn--sm btn--primary"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal-up" data-category="web security" style="--delay:0.15s">
+          <div class="project-card__image">
+            <i class="fas fa-key project-card__img-icon"></i>
+            <div class="project-card__overlay">
+              <span class="project-card__cat-badge">Web · Security</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Password Strength Analyzer</h3>
+            <p class="project-card__desc">Real-time password strength checker with entropy calculation, breach database
+              lookup, and security recommendations.</p>
+            <div class="project-card__stack">
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">HTML/CSS</span>
+              <span class="stack-tag">API</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="btn btn--sm btn--outline"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="btn btn--sm btn--primary"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal-up" data-category="web security" style="--delay:0.2s">
+          <div class="project-card__image">
+            <i class="fas fa-lock project-card__img-icon"></i>
+            <div class="project-card__overlay">
+              <span class="project-card__cat-badge">Web · Security</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Secure Login System</h3>
+            <p class="project-card__desc">Full-stack authentication with bcrypt hashing, rate limiting, 2FA support,
+              session management, and brute-force protection.</p>
+            <div class="project-card__stack">
+              <span class="stack-tag">PHP</span>
+              <span class="stack-tag">MySQL</span>
+              <span class="stack-tag">JS</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="btn btn--sm btn--outline"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="btn btn--sm btn--primary"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal-up" data-category="python security" style="--delay:0.25s">
+          <div class="project-card__image">
+            <i class="fas fa-wave-square project-card__img-icon"></i>
+            <div class="project-card__overlay">
+              <span class="project-card__cat-badge">Python · Security</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Packet Sniffer Demo</h3>
+            <p class="project-card__desc">Educational packet sniffer using Scapy that demonstrates ARP poisoning
+              detection, DNS analysis, and HTTP traffic inspection.</p>
+            <div class="project-card__stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Scapy</span>
+              <span class="stack-tag">Networking</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="btn btn--sm btn--outline"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="btn btn--sm btn--primary"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal-up" data-category="web" style="--delay:0.3s">
+          <div class="project-card__image">
+            <i class="fas fa-flag project-card__img-icon"></i>
+            <div class="project-card__overlay">
+              <span class="project-card__cat-badge">Web · CTF</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">CTF Writeups Blog</h3>
+            <p class="project-card__desc">Personal CTF writeup website with syntax-highlighted code blocks, challenge
+              categorization, and difficulty ratings.</p>
+            <div class="project-card__stack">
+              <span class="stack-tag">HTML/CSS</span>
+              <span class="stack-tag">JavaScript</span>
+              <span class="stack-tag">Markdown</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="btn btn--sm btn--outline"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="btn btn--sm btn--primary"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card glass-card reveal-up" data-category="python security" style="--delay:0.35s">
+          <div class="project-card__image">
+            <i class="fas fa-search project-card__img-icon"></i>
+            <div class="project-card__overlay">
+              <span class="project-card__cat-badge">Python · Security</span>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Vulnerability Scanner UI</h3>
+            <p class="project-card__desc">Web-based dashboard wrapping Nmap and Nikto scans, presenting results in a
+              visual, color-coded threat matrix.</p>
+            <div class="project-card__stack">
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">Flask</span>
+              <span class="stack-tag">Nmap</span>
+            </div>
+            <div class="project-card__links">
+              <a href="#" class="btn btn--sm btn--outline"><i class="fab fa-github"></i> GitHub</a>
+              <a href="#" class="btn btn--sm btn--primary"><i class="fas fa-external-link-alt"></i> Live</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CERTIFICATIONS & ACHIEVEMENTS SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="certifications" class="certifications section">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Certs & <span class="text-accent">Achievements</span></h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="certs__grid">
+
+        <div class="cert-card glass-card reveal-up" style="--delay:0.1s">
+          <div class="cert-card__badge"><i class="fas fa-network-wired"></i></div>
+          <div class="cert-card__body">
+            <h4 class="cert-card__title">Cisco CCNA (In Progress)</h4>
+            <p class="cert-card__issuer">Cisco Networking Academy</p>
+            <p class="cert-card__desc">Routing, switching, VLANs, STP, OSPF, subnetting.</p>
+            <span class="cert-card__status cert-card__status--progress">In Progress</span>
+          </div>
+        </div>
+
+        <div class="cert-card glass-card reveal-up" style="--delay:0.15s">
+          <div class="cert-card__badge"><i class="fas fa-user-secret"></i></div>
+          <div class="cert-card__body">
+            <h4 class="cert-card__title">Ethical Hacking Essentials</h4>
+            <p class="cert-card__issuer">EC-Council · CodeRed</p>
+            <p class="cert-card__desc">Recon, scanning, exploitation, post-exploitation, reporting.</p>
+            <span class="cert-card__status cert-card__status--done">Completed · 2024</span>
+          </div>
+        </div>
+
+        <div class="cert-card glass-card reveal-up" style="--delay:0.2s">
+          <div class="cert-card__badge"><i class="fas fa-flag"></i></div>
+          <div class="cert-card__body">
+            <h4 class="cert-card__title">PicoCTF 2024</h4>
+            <p class="cert-card__issuer">Carnegie Mellon University</p>
+            <p class="cert-card__desc">Solved 34 challenges across web, crypto, forensics, rev.</p>
+            <span class="cert-card__status cert-card__status--done">Top 15% Global</span>
+          </div>
+        </div>
+
+        <div class="cert-card glass-card reveal-up" style="--delay:0.25s">
+          <div class="cert-card__badge"><i class="fas fa-shield-alt"></i></div>
+          <div class="cert-card__body">
+            <h4 class="cert-card__title">Google Cybersecurity Certificate</h4>
+            <p class="cert-card__issuer">Google · Coursera</p>
+            <p class="cert-card__desc">SIEM, IDS, threat analysis, incident response, Python automation.</p>
+            <span class="cert-card__status cert-card__status--done">Completed · 2023</span>
+          </div>
+        </div>
+
+        <div class="cert-card glass-card reveal-up" style="--delay:0.3s">
+          <div class="cert-card__badge"><i class="fas fa-laptop-code"></i></div>
+          <div class="cert-card__body">
+            <h4 class="cert-card__title">Hackathon — SecureHack Nepal</h4>
+            <p class="cert-card__issuer">Cybersecurity Society of Nepal</p>
+            <p class="cert-card__desc">Built a real-time phishing detection extension. 2nd place out of 40 teams.</p>
+            <span class="cert-card__status cert-card__status--award">🏆 2nd Place</span>
+          </div>
+        </div>
+
+        <div class="cert-card glass-card reveal-up" style="--delay:0.35s">
+          <div class="cert-card__badge"><i class="fas fa-tools"></i></div>
+          <div class="cert-card__body">
+            <h4 class="cert-card__title">TryHackMe — Top 5%</h4>
+            <p class="cert-card__issuer">TryHackMe Platform</p>
+            <p class="cert-card__desc">Completed 80+ rooms covering pentesting, OSINT, malware analysis.</p>
+            <span class="cert-card__status cert-card__status--done">Top 5% Global</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       LEARNING JOURNEY TIMELINE
+  ═══════════════════════════════════════════ -->
+  <section id="timeline" class="timeline-section section">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Learning <span class="text-accent">Timeline</span></h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__line"></div>
+
+        <div class="timeline__item timeline__item--left reveal-left">
+          <div class="timeline__dot"><i class="fas fa-code"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">Jan 2023</span>
+            <h4 class="timeline__title">Started Web Development</h4>
+            <p class="timeline__desc">Began learning HTML and CSS, built my first static website — a personal blog about
+              tech.</p>
+            <div class="timeline__tags"><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span></div>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--right reveal-right">
+          <div class="timeline__dot"><i class="fab fa-js"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">Jun 2023</span>
+            <h4 class="timeline__title">JavaScript Mastery</h4>
+            <p class="timeline__desc">Deep-dived into JavaScript — DOM, events, fetch API, and built interactive web
+              apps.</p>
+            <div class="timeline__tags"><span class="stack-tag">JS</span><span class="stack-tag">DOM</span></div>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--left reveal-left">
+          <div class="timeline__dot"><i class="fas fa-shield-alt"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">Jan 2024</span>
+            <h4 class="timeline__title">Cybersecurity Introduction</h4>
+            <p class="timeline__desc">Enrolled in Google's Cybersecurity Professional Certificate. Started learning
+              about threats and defenses.</p>
+            <div class="timeline__tags"><span class="stack-tag">Security</span><span class="stack-tag">SIEM</span></div>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--right reveal-right">
+          <div class="timeline__dot"><i class="fab fa-linux"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">Apr 2024</span>
+            <h4 class="timeline__title">Linux & Networking Deep Dive</h4>
+            <p class="timeline__desc">Switched daily driver to Kali Linux. Learned networking fundamentals, Wireshark,
+              Nmap.</p>
+            <div class="timeline__tags"><span class="stack-tag">Linux</span><span class="stack-tag">Networking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--left reveal-left">
+          <div class="timeline__dot"><i class="fas fa-flag"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">Oct 2024</span>
+            <h4 class="timeline__title">First CTF Participation</h4>
+            <p class="timeline__desc">Competed in PicoCTF for the first time. Solved web, forensics, and crypto
+              challenges.</p>
+            <div class="timeline__tags"><span class="stack-tag">CTF</span><span class="stack-tag">Web</span><span
+                class="stack-tag">Crypto</span></div>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--right reveal-right">
+          <div class="timeline__dot"><i class="fas fa-tools"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">Jan 2025</span>
+            <h4 class="timeline__title">Built Security Projects</h4>
+            <p class="timeline__desc">Developed a port scanner, password analyzer, and packet sniffer — combining
+              security and coding skills.</p>
+            <div class="timeline__tags"><span class="stack-tag">Python</span><span class="stack-tag">Projects</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--left reveal-left">
+          <div class="timeline__dot"><i class="fas fa-rocket"></i></div>
+          <div class="timeline__card glass-card">
+            <span class="timeline__date">2025 – Now</span>
+            <h4 class="timeline__title">Advanced Security Research</h4>
+            <p class="timeline__desc">Pursuing CCNA, practicing on HackTheBox, targeting CEH certification, and building
+              a security blog.</p>
+            <div class="timeline__tags"><span class="stack-tag">CEH</span><span class="stack-tag">HTB</span><span
+                class="stack-tag">Research</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════════════ -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section__header reveal-up">
+        <h2 class="section__title">Get In <span class="text-accent">Touch</span></h2>
+        <div class="section__line"></div>
+      </div>
+
+      <div class="contact__grid">
+        <!-- Left: Info -->
+        <div class="contact__info reveal-left">
+          <p class="contact__intro">
+            Have a project idea, internship opportunity, or just want to talk cybersecurity?
+            My inbox is always open — I'll respond within 24 hours.
+          </p>
+
+          <div class="contact__channels">
+            <a href="mailto:ranjan123aryal@gmail.com" class="contact__channel glass-card-sm">
+              <div class="contact__channel-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <span class="contact__channel-label">Email</span>
+                <span class="contact__channel-val">ranjan123aryal@gmail.com</span>
+              </div>
+            </a>
+            <a href="#" class="contact__channel glass-card-sm">
+              <div class="contact__channel-icon"><i class="fab fa-linkedin"></i></div>
+              <div>
+                <span class="contact__channel-label">LinkedIn</span>
+                <span class="contact__channel-val">linkedin.com</span>
+              </div>
+            </a>
+            <a href="https://github.com/ranjan-aryal" class="contact__channel glass-card-sm">
+              <div class="contact__channel-icon"><i class="fab fa-github"></i></div>
+              <div>
+                <span class="contact__channel-label">GitHub</span>
+                <span class="contact__channel-val">github.com/ranjan-aryal</span>
+              </div>
+            </a>
+            <div class="contact__channel glass-card-sm">
+              <div class="contact__channel-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <span class="contact__channel-label">Location</span>
+                <span class="contact__channel-val">Butwal, Nepal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="contact__form-wrap reveal-right">
+          <form id="contact-form" class="contact__form glass-card" novalidate>
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-user form-input-icon"></i>
+                <input type="text" id="name" name="name" class="form-input" placeholder="John Cena"
+                  autocomplete="name" />
+              </div>
+              <span class="form-error" id="name-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-envelope form-input-icon"></i>
+                <input type="email" id="email" name="email" class="form-input" placeholder="you@gmail.com"
+                  autocomplete="email" />
+              </div>
+              <span class="form-error" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <div class="form-input-wrap">
+                <i class="fas fa-tag form-input-icon"></i>
+                <input type="text" id="subject" name="subject" class="form-input"
+                  placeholder="Internship Opportunity" />
+              </div>
+              <span class="form-error" id="subject-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-input form-textarea"
+                placeholder="Hello Ranjan, I'd like to discuss..."></textarea>
+              <span class="form-error" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              <i class="fas fa-paper-plane"></i>
+              <span>Send Message</span>
+              <span class="btn__loading" style="display:none"><i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+
+            <div id="form-success" class="form-success" style="display:none">
+              <i class="fas fa-check-circle"></i> Message sent successfully! I'll be in touch soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="container footer__top-inner">
+        <!-- Brand -->
+        <div class="footer__brand">
+          <span class="footer__logo">
+            <span class="navbar__logo-bracket">[</span>CYBER<span class="navbar__logo-accent">_</span>DEV<span
+              class="navbar__logo-bracket">]</span>
+          </span>
+          <p class="footer__tagline">Building secure solutions, one line at a time.</p>
+        </div>
+        <!-- Quick Links -->
+        <div class="footer__col">
+          <h5 class="footer__col-title">Quick Links</h5>
+          <ul class="footer__links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5 class="footer__col-title">Explore</h5>
+          <ul class="footer__links">
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#timeline">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Resume</a></li>
+          </ul>
+        </div>
+        <!-- Social -->
+        <div class="footer__col">
+          <h5 class="footer__col-title">Connect</h5>
+          <div class="footer__socials">
+            <a href="https://github.com/ranjan-aryal" class="footer__social" aria-label="GitHub" target="_blank"><i
+                class="fab fa-github"></i></a>
+            <a href="#" class="footer__social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="footer__social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer__social" aria-label="TryHackMe"><i class="fas fa-flag"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; <span id="footer-year"></span> Ranjan Aryal. All rights reserved.</p>
+        <p class="footer__built">Built with <i class="fas fa-heart" style="color:#ff4757"></i> using HTML, CSS &amp;
+          JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
